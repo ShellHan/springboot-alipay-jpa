@@ -1,22 +1,17 @@
 package com.springboot.controller;
 
 import java.util.List;
-
-import javax.websocket.server.PathParam;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
-import com.alibaba.dubbo.common.utils.CollectionUtils;
-import com.alibaba.fastjson.JSONObject;
 import com.springboot.common.constants.ResultDTO;
 import com.springboot.pojo.TradeEntity;
 import com.springboot.pojo.TradeRefundEntity;
@@ -26,7 +21,7 @@ import com.springboot.service.TradePayService;
 import com.springboot.service.TradeRefundQueryService;
 import com.springboot.service.TradeRefundServie;
 
-@RestController
+@Controller
 @RequestMapping("/alipay")
 public class AliPayController {
 	
@@ -43,20 +38,11 @@ public class AliPayController {
 	@Autowired
 	private TradeRefundServie tradeRefundServie;
 	
-	@RequestMapping(value = "/tradePay" , method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-	@ResponseBody
-	public ResultDTO<String> tradePay(TradeEntity trade) {
-		
-		String data = tradePayService.tradePay(trade);
-		
-		 ResultDTO<String> result = new ResultDTO<>();
-		 result.setData(data);
-		 result.setErrorCode("88888888");
-		 result.setStatus("200");
-		 result.setMsg("success");
-		
-		return result;
-		
+	@RequestMapping(value = "/tradePay")
+	public String tradePay(TradeEntity trade, Map<String, Object> map) {
+		String result = tradePayService.tradePay(trade);
+		map.put("result", result);
+		return "alipay";
 	}
 	
 	@RequestMapping(value = "/tradePayQuery" , method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
@@ -124,18 +110,16 @@ public class AliPayController {
 		
 	}
 	
+	@RequestMapping("/list")
+	public String getList(){
+		 return "list";
+	}
+	
 	@RequestMapping("/getTradeAll")
 	@ResponseBody
-	public ResultDTO<String> getTradeAll(){
+	public List<TradeEntity> getTradeAll(){
 		 List<TradeEntity> allTrade = tradePayQueryService.getAllTrade();
-		 ResultDTO<String> result = new ResultDTO<>();
-		 String data = JSONObject.toJSON(allTrade).toString();
-		 result.setData(data);
-		 result.setErrorCode("88888888");
-		 result.setStatus("200");
-		 result.setMsg("success");
-		 
-		 return result;
+		 return allTrade;
 	}
 	
 }

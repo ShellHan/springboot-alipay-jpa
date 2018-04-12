@@ -1,5 +1,7 @@
 package com.springboot.service;
 
+import java.util.UUID;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +36,10 @@ public class TradePayService {
 		alipayRequest.setReturnUrl(SystemConstants.AliPayConfig.return_url);
 		alipayRequest.setNotifyUrl(SystemConstants.AliPayConfig.notify_url);
 		
+		
 		//商户订单号，商户网站订单系统中唯一订单号，必填
-		String out_trade_no = tradeEntity.getOutTradeNo();
+		String out_trade_no = UUID.randomUUID().toString().replace("-", "").substring(0, 8);
+		
 		//付款金额，必填
 		String total_amount = null; 
 		String body = null;
@@ -57,7 +61,7 @@ public class TradePayService {
 			break;
 		}
 		//订单名称，必填
-		String subject = tradeEntity.getSubject();
+		String subject = body;
 		//商品描述，可空
 		
 		
