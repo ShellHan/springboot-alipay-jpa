@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>在线支付_韩小贝</title>
 <meta name="keywords" content="在线支付案例，支付宝支付Demo">
-<link rel="stylesheet" href="../layui/css/layui.css">
+<link rel="stylesheet" src="./layui/css/layui.css">
 <meta name="description" content="一个Java实现的支付宝微信在线支付在线案例。">
 <meta name="renderer" content="webkit">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
