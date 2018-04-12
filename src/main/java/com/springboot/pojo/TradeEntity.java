@@ -27,7 +27,10 @@ public class TradeEntity {
 	private String totalAmount;	//付款金额，必填
 	private String subject;		//订单名称，必填
 	private String body;		//商品描述，可空
-	
 	private String result; 		//返回结果
+	private Integer productId; 
+	private String nickName;
+	private String qq;
+	private String message;
 	
 }

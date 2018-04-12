@@ -37,11 +37,29 @@ public class TradePayService {
 		//商户订单号，商户网站订单系统中唯一订单号，必填
 		String out_trade_no = tradeEntity.getOutTradeNo();
 		//付款金额，必填
-		String total_amount = tradeEntity.getTotalAmount(); 
+		String total_amount = null; 
+		String body = null;
+		switch (tradeEntity.getProductId()) {
+		case 1:
+			total_amount = "9";
+			body = "09元-请小贝喝杯奶茶";
+			break;
+		case 2:
+			total_amount = "29";
+			body = "29元-请小贝吃肯德基";
+			break;
+		case 3:
+			total_amount = "49";
+			body = "49元-请小贝吃顿饭";
+			break;
+
+		default:
+			break;
+		}
 		//订单名称，必填
 		String subject = tradeEntity.getSubject();
 		//商品描述，可空
-		String body = tradeEntity.getBody();
+		
 		
 		AlipayTradePagePayModel model=new AlipayTradePagePayModel();
         model.setOutTradeNo(out_trade_no);
@@ -68,5 +86,7 @@ public class TradePayService {
     	
     	return result;
 	}
+	
+	
 	
 }

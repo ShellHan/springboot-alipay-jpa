@@ -5,6 +5,7 @@ import javax.websocket.server.PathParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,7 +15,7 @@ import com.springboot.common.constants.ResultDTO;
 import com.springboot.pojo.User;
 import com.springboot.service.UserService;
 
-@RestController
+@Controller
 public class UserController {
 	
 	private static final  Logger LOGGER = LoggerFactory.getLogger(UserController.class);
@@ -22,7 +23,7 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping("/hello")
+	@RequestMapping("/")
 	public String hello() {
 		return "index";
 	}
