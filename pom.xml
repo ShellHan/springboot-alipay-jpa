@@ -1,7 +1,7 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+ <modelVersion>4.0.0</modelVersion>
   <groupId>com.han</groupId>
-  <artifactId>spring-boot-data-jpa</artifactId>
+  <artifactId>springboot-alipay-jpa</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
   
@@ -104,6 +104,14 @@
 	    <artifactId>spring-boot-starter-test</artifactId>
 	    <version>1.5.3.RELEASE</version>
 	    <scope>test</scope>
+	</dependency>
+
+	<!-- 支付宝Sdk -->
+	<!-- https://mvnrepository.com/artifact/com.github.1991wangliang/alipay-sdk -->
+	<dependency>
+	    <groupId>com.github.1991wangliang</groupId>
+	    <artifactId>alipay-sdk</artifactId>
+	    <version>1.0.0</version>
 	</dependency>
 
   </dependencies>

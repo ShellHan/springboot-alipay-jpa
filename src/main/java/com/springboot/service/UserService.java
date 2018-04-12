@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
 import com.springboot.common.annoation.ServiceCache;
 import com.springboot.common.constants.ResultDTO;
 import com.springboot.pojo.User;
@@ -25,6 +24,7 @@ public class UserService {
 	
 	public ResultDTO getAll(){		
 		List<User> findAll = userRepository.findAll();
+		logger.info("查询用户信息：findAll:{}",findAll);
 		ResultDTO resultDTO = new ResultDTO();
 		resultDTO.setData(JSON.toJSONString(findAll));
 		resultDTO.setErrorCode("00000000");

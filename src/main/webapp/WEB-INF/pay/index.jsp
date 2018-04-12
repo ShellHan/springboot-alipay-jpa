@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	hello springboot !!!
+
+	AliPay.jsp
+
 </body>
 </html>

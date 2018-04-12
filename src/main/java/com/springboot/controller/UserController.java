@@ -1,7 +1,5 @@
 package com.springboot.controller;
 
-import java.util.List;
-
 import javax.websocket.server.PathParam;
 
 import org.slf4j.Logger;

@@ -5,11 +5,11 @@ import lombok.ToString;
 
 @Data
 @ToString
-public class ResultDTO {
+public class ResultDTO<T> {
 
 	private String status;
 	private String msg;
-	private String data;
+	private T data;
 	private String errorCode;
 	
 }
