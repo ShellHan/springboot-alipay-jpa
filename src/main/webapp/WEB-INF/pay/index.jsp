@@ -77,14 +77,11 @@
 				      <input type="radio" name="way" value="微信" title="微信" disabled>
 				    </div>
 				  </div>
-				  
-				  
 				  <div class="layui-form-item">
 				    <div class="layui-input-block">
 				      <button class="layui-btn" lay-submit="" lay-filter="demo1">支付提交</button>
 				    </div>
 				  </div>
-  
 	        </form>
 	    </div>
 	</div>

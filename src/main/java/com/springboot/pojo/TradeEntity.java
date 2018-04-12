@@ -1,5 +1,7 @@
 package com.springboot.pojo;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -31,6 +33,8 @@ public class TradeEntity {
 	private Integer productId; 
 	private String nickName;
 	private String qq;
+	private Date buyTime;
+	private String way;
 	private String message;
 	
 }
