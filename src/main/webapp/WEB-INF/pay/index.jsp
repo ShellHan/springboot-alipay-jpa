@@ -83,6 +83,9 @@
 				    </div>
 				  </div>
 	        </form>
+	        <div class="layui-col-xs12">
+	        	<strong style="color: red;">此支付接口为沙箱测试接口！扫码支付请使用安卓版 <<沙箱测试应用>> </strong>
+	        </div>
 	    </div>
 	</div>
 	

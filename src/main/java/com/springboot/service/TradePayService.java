@@ -12,6 +12,7 @@ import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.domain.AlipayTradePagePayModel;
 import com.alipay.api.request.AlipayTradePagePayRequest;
+import com.springboot.common.constants.CommonParams;
 import com.springboot.common.constants.SystemConstants;
 import com.springboot.pojo.TradeEntity;
 import com.springboot.repository.TradeRepository;
@@ -24,7 +25,7 @@ public class TradePayService {
 	@Autowired
 	private TradeRepository tradeRepository;
 	
-	public String tradePay(TradeEntity tradeEntity){
+	public String tradePay(CommonParams comm){
 		
 		String result = null;
 		
@@ -38,12 +39,12 @@ public class TradePayService {
 		
 		
 		//商户订单号，商户网站订单系统中唯一订单号，必填
-		String out_trade_no = UUID.randomUUID().toString().replace("-", "").substring(0, 8);
+		String out_trade_no = UUID.randomUUID().toString().replace("-", "").substring(0, 12);
 		
 		//付款金额，必填
 		String total_amount = null; 
 		String body = null;
-		switch (tradeEntity.getProductId()) {
+		switch (comm.getProductId()) {
 		case 1:
 			total_amount = "9";
 			body = "09元-请小贝喝杯奶茶";
@@ -83,8 +84,18 @@ public class TradePayService {
 			logger.error("支付失败  tradePay 错误为：{}",e.getMessage());
 		}
     	
+    	TradeEntity tradeEntity = new TradeEntity();
+    	
     	//插入返回结果
-    	tradeEntity.setResult(result);
+    	tradeEntity.setBody(body);
+    	tradeEntity.setOutTradeNo(out_trade_no);
+    	tradeEntity.setTotalAmount(total_amount);
+    	tradeEntity.setNickName(comm.getNickName());
+    	tradeEntity.setQq(comm.getQq());
+    	tradeEntity.setSubject(subject);
+    	tradeEntity.setWay(comm.getWay());
+    	tradeEntity.setMessage(comm.getMessage());
+    	
     	//保存到数据库
     	tradeRepository.save(tradeEntity);
     	
