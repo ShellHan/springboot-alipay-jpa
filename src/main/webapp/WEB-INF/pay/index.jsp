@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path;
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,7 +13,7 @@
 <head>
 <title>在线支付_韩小贝</title>
 <meta name="keywords" content="在线支付案例，支付宝支付Demo">
-<link rel="stylesheet" href="/layui/css/layui.css"/>
+<link rel="stylesheet" href="<%=basePath%>/layui/css/layui.css"/>
 <meta name="description" content="一个Java实现的支付宝微信在线支付在线案例。">
 <meta name="renderer" content="webkit">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -23,8 +29,8 @@
 <div class="layui-row">
     <div class="layui-col-xs12">
         	<ul class="layui-nav">
-			  <li class="layui-nav-item"><a href="/">在线支付</a></li>
-			  <li class="layui-nav-item"><a href="/alipay/list">订单查询</a></li>
+			  <li class="layui-nav-item"><a href="<%=basePath%>/">在线支付</a></li>
+			  <li class="layui-nav-item"><a href="<%=basePath%>/alipay/list">订单查询</a></li>
 			  <li class="layui-nav-item"><a href="http://blog.java1234.com/blog/articles/388.html" target="_blank">跟着峰哥学支付宝/微信支付</a></li>
 			</ul>
     </div>
@@ -91,7 +97,7 @@
 	
   </div>
 
-<script src="/layui/layui.js"></script> 
+<script src="<%=basePath%>/layui/layui.js"></script> 
 <script>
 layui.use('element', function(){
   var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
@@ -107,9 +113,9 @@ layui.use('form', function(){
    //监听提交
   form.on('submit(demo1)', function(data){
     if(data.field.way=='支付宝'){
-    	data.form.action="/alipay/tradePay";
+    	data.form.action="/pay/alipay/tradePay";
     }else if(data.field.way=='微信'){
-    	data.form.action="/weixinpay/pay";
+    	data.form.action="/pay/weixinpay/pay";
     }
     return true;
   });
