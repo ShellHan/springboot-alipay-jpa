@@ -79,7 +79,7 @@ public class TradePayService {
         //请求
     	try {
 			result = alipayClient.pageExecute(alipayRequest).getBody();
-			logger.info("调用 支付接口 返回信息：result:{}",result);
+			logger.debug("调用 支付接口 返回信息：result:{}",result);
 		} catch (AlipayApiException e) {
 			logger.error("支付失败  tradePay 错误为：{}",e.getMessage());
 		}
@@ -95,6 +95,8 @@ public class TradePayService {
     	tradeEntity.setSubject(subject);
     	tradeEntity.setWay(comm.getWay());
     	tradeEntity.setMessage(comm.getMessage());
+    	
+    	logger.debug("插入数据库数据为：tradeEntity：{}",tradeEntity);
     	
     	//保存到数据库
     	tradeRepository.save(tradeEntity);

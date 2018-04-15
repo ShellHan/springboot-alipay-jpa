@@ -126,8 +126,13 @@ public class AliPayController {
 		return result;
 
 	}
-
+	
 	@RequestMapping(value = "/list")
+	public String getList() {
+		return "list";
+	}
+
+	@RequestMapping(value = "/alipayRet")
 	public String getList(AlipayDto alipayDto) {
 
 		Map<String, String> params = new HashMap<String, String>();
@@ -170,7 +175,7 @@ public class AliPayController {
 			alipayRepository.save(alipayEntity);
 		}
 		
-		return "list";
+		return "redirect:/alipay/list";
 	}
 
 	@RequestMapping("/getTradeAll")

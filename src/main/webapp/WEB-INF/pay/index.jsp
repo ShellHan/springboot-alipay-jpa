@@ -29,7 +29,7 @@
 <div class="layui-row">
     <div class="layui-col-xs12">
         	<ul class="layui-nav">
-			  <li class="layui-nav-item"><a href="<%=basePath%>/">在线支付</a></li>
+			  <li class="layui-nav-item"><a href="<%=basePath%>/index">在线支付</a></li>
 			  <li class="layui-nav-item"><a href="<%=basePath%>/alipay/list">订单查询</a></li>
 			  <li class="layui-nav-item"><a href="http://blog.java1234.com/blog/articles/388.html" target="_blank">跟着峰哥学支付宝/微信支付</a></li>
 			</ul>

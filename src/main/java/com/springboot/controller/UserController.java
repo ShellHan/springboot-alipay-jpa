@@ -23,7 +23,7 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping("/")
+	@RequestMapping("/index")
 	public String hello() {
 		return "index";
 	}
